@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <parent>
-    <artifactId>pipeline-jobs</artifactId>
-    <groupId>org.sunbird.dp</groupId>
-    <version>1.0</version>
-    <relativePath>../pom.xml/pom.xml</relativePath>
-  </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.sunbird.dp.jobs</groupId>
+  <groupId>org.sunbird.cb</groupId>
   <artifactId>cb-preprocessor</artifactId>
   <name>CBPreprocessor</name>
-  <version>1.0.0</version>
+  <version>1.0</version>
   <description>Flatten and Process CB_AUDIT Events</description>
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
@@ -51,7 +45,7 @@
               </filters>
               <transformers>
                 <transformer>
-                  <mainClass>org.sunbird.dp.cbpreprocessor.task.CBPreprocessorStreamTask</mainClass>
+                  <mainClass>org.sunbird.cb.preprocessor.task.CBPreprocessorStreamTask</mainClass>
                 </transformer>
                 <transformer>
                   <resource>reference.conf</resource>
@@ -357,12 +351,11 @@
   </dependencies>
   <properties>
     <scala.version>2.12.11</scala.version>
-    <release-version>release-4.1.0</release-version>
     <java.target.runtime>11</java.target.runtime>
     <scoverage.plugin.version>1.4.0</scoverage.plugin.version>
     <encoding>UTF-8</encoding>
     <flink.version>1.13.0</flink.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scala.maj.version>2.12</scala.maj.version>
+    <kafka.version>2.4.0</kafka.version>
   </properties>
 </project>
