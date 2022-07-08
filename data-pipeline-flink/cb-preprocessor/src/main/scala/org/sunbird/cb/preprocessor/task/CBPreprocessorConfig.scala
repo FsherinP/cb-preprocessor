@@ -14,7 +14,7 @@ class CBPreprocessorConfig(override val config: Config) extends BaseJobConfig(co
   implicit val eventTypeInfo: TypeInformation[Event] = TypeExtractor.getForClass(classOf[Event])
   implicit val stringTypeInfo: TypeInformation[String] = TypeExtractor.getForClass(classOf[String])
 
-  // val schemaPath: String = config.getString("telemetry.schema.path")
+   val schemaPath: String = config.getString("telemetry.schema.path")
 
   // Kafka Topic Configuration
   val kafkaInputTopic: String = config.getString("kafka.input.topic")
@@ -54,7 +54,7 @@ class CBPreprocessorConfig(override val config: Config) extends BaseJobConfig(co
   val cbWorkOrderOfficerProducer = "cb-work-order-officer-sink"
   val cbFailedEventProducer = "cb-failed-events-sink"
 
-  // val defaultSchemaFile = "envelope.json"
+   val defaultSchemaFile = "envelope.json"
 
   val dedupStore: Int = config.getInt("redis.database.duplicationstore.id")
   val cacheExpirySeconds: Int = config.getInt("redis.database.key.expiry.seconds")

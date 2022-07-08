@@ -19,7 +19,7 @@ import java.io.File
 
 class CBPreprocessorStreamTask(config: CBPreprocessorConfig, kafkaConnector: FlinkKafkaConnector) {
 
-  private val serialVersionUID = 146697324640926024L
+  private val serialVersionUID = 146697324640926029L
 
   def process(): Unit = {
     implicit val env: StreamExecutionEnvironment = FlinkUtil.getExecutionContext(config)
