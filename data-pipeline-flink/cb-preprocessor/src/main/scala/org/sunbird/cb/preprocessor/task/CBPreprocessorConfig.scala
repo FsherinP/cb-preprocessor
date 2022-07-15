@@ -30,6 +30,8 @@ class CBPreprocessorConfig(override val config: Config) extends BaseJobConfig(co
   val cbWorkOrderRowOutputTag: OutputTag[Event] = OutputTag[Event]("cb-work-order-row")
   val cbWorkOrderOfficerOutputTag: OutputTag[Event] = OutputTag[Event]("cb-work-order-officer")
   val cbFailedOutputTag: OutputTag[Event] = OutputTag[Event]("cb-failed-events")
+  val validationFailedEventsOutputTag: OutputTag[Event] = OutputTag[Event]("validation-failed-events")
+  val duplicateEventsOutputTag: OutputTag[Event] = OutputTag[Event]("duplicate-events")
 
   override val kafkaConsumerParallelism: Int = config.getInt("task.consumer.parallelism")
   val downstreamOperatorsParallelism: Int = config.getInt("task.downstream.operators.parallelism")
@@ -41,9 +43,8 @@ class CBPreprocessorConfig(override val config: Config) extends BaseJobConfig(co
   val cbAuditFailedMetricCount = "cb-audit-route-failed-count"
 
   // Validation job metrics
-  // val validationSuccessMetricsCount = "validation-success-event-count"
-  // val validationFailureMetricsCount = "validation-failed-event-count"
-  // val validationSkipMetricsCount = "validation-skipped-event-count"
+   val validationSuccessMetricsCount = "validation-success-event-count"
+   val validationFailureMetricsCount = "validation-failed-event-count"
 
   // Consumers
   val cbPreprocessorConsumer = "cb-preprocessor-consumer"
@@ -58,10 +59,11 @@ class CBPreprocessorConfig(override val config: Config) extends BaseJobConfig(co
 
   val dedupStore: Int = config.getInt("redis.database.duplicationstore.id")
   val cacheExpirySeconds: Int = config.getInt("redis.database.key.expiry.seconds")
-  val duplicateEventsOutputTag: OutputTag[Event] = OutputTag[Event]("duplicate-events")
   val DEDUP_FLAG_NAME = "cb_duplicate"
 
   val kafkaDuplicateTopic: String = config.getString("kafka.output.duplicate.topic")
   val duplicateEventProducer = "duplicate-events-sink"
+
+  val VALIDATION_FLAG_NAME = "cbp_validation_processed"
 
 }
