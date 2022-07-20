@@ -89,7 +89,11 @@ class CBPreprocessorFunction(config: CBPreprocessorConfig,
           }
         }
 
+      } else {
+        logger.debug(s"Event with mid: ${event.cbUid} is duplicate")
       }
+    } else {
+      logger.debug(s"Telemetry schema validation is failed for ${event.mid()} due to Schema not found: eid not found")
     }
   }
 }
