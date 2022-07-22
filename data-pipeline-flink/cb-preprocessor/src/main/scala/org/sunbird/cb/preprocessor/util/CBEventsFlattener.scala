@@ -71,7 +71,7 @@ class CBEventsFlattener extends java.io.Serializable {
       val newMap = mergedMap(List(
         // Map            Prefix             Exclusion
         (workOrderMap,    "",                Set("users")),
-        (user,            "wa_",             Set("roleCompetencyList", "unmappedActivities", "unmappedCompetencies")),
+        (user,            "wa_",             Set("roleCompetencyList", "unmappedActivities", "unmappedCompetencies"))
       ))
       flattenedList.append(newMap)
     })
